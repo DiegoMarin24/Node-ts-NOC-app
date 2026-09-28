@@ -1,6 +1,5 @@
 import nodemailer from "nodemailer";
 import { envs } from "../../config/plugins/envs.plugin";
-import { LogRepository } from "../../domain/repository/log.repository";
 import { LogEntity, LogSeverityLevel } from "../../domain/entities/log.entity";
 
 interface SendMailOptions {
@@ -26,9 +25,7 @@ export class EmailService {
         }
     });
 
-    constructor(
-        private readonly logRepository: LogRepository,
-    ){}
+    constructor(){}
 
     async sendEmail(options: SendMailOptions): Promise<boolean>     {
 
@@ -49,7 +46,7 @@ export class EmailService {
                 message: 'Email sent',
                 origin: 'email.service.ts',
             })
-            this.logRepository.saveLog(log);
+         
 
             return true;
         } catch (error) {
@@ -59,8 +56,8 @@ export class EmailService {
                 message: 'Email not sent',
                 origin: 'email.service.ts',
             })
-            this.logRepository.saveLog(log);
-            
+
+
             return false;
         }
     }
@@ -69,7 +66,7 @@ export class EmailService {
         const subject = 'Logs del servidor'
         const htmlBody = `
             <h3>Logs de sistema - NOC</h3>
-            <p>Lorem xd bueno texto de lo que sea la verdad no importa, estamos probando el envio de mails</p>
+            <p>bueno texto de lo que sea la verdad no importa, estamos probando el envio de emails</p>
             <p>Ver logs adjuntos</p>
         `;
         
