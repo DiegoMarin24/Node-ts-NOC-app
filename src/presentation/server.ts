@@ -19,12 +19,12 @@ export class Server {
 
         //TODO: Enviar email
 
-        new SendEmailLogs(
-            emailService,
-            fileSystemLogRepository,
-        ).execute(
-            ['diegoamarin2498@gmail.com']
-        )
+        // new SendEmailLogs(
+        //     emailService,
+        //     fileSystemLogRepository,
+        // ).execute(
+        //     ['diegoamarin2498@gmail.com']
+        // )
         
         // emailService.sendEmailWithFileSystemLogs(
         //     ['diegoamarin2498@gmail.com']
